@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "865524344713",
+    "firebase_url": "https://easyhaircut-5cb4f.firebaseio.com",
+    "project_id": "easyhaircut-5cb4f",
+    "storage_bucket": "easyhaircut-5cb4f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:865524344713:android:9632271c97bbfa4abba358",
+        "android_client_info": {
+          "package_name": "com.example.easyhaircut"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "865524344713-n5l45kdiqm55ejdu7ghlng6cjssbca49.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.easyhaircut",
+            "certificate_hash": "ab15bcd52fa87ab4631089154f6218dc8dd87ae3"
+          }
+        },
+        {
+          "client_id": "865524344713-t557mhl6nrhq6mr38u2lfd3reppb8tnd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYseUNcroJIPyxC10fIUcsMPkXuXt2h-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "865524344713-t557mhl6nrhq6mr38u2lfd3reppb8tnd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

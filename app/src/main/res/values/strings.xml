@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">EasyHairCut</string>
+    <string name="app_name">Easy Hair Cut</string>
+    <string name="user">User</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="Sing_Up">Sing Up</string>
 </resources>
