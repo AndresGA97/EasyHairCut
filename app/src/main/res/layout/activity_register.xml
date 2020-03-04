@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity">
+
+    <TextView
+        android:id="@+id/textViewTitleRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/app_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewNameRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="112dp"
+        android:text="@string/name"
+        app:layout_constraintEnd_toEndOf="@+id/textViewLastNameRegister"
+        app:layout_constraintHorizontal_bias="0.612"
+        app:layout_constraintStart_toStartOf="@+id/textViewLastNameRegister"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewLastNameRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="@string/last_name"
+        app:layout_constraintEnd_toEndOf="@+id/textViewEmailRegister"
+        app:layout_constraintStart_toStartOf="@+id/textViewEmailRegister"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNameRegister" />
+
+    <TextView
+        android:id="@+id/textViewEmail2Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="@string/repeat_email"
+        app:layout_constraintEnd_toEndOf="@+id/textViewPasswordRegister"
+        app:layout_constraintStart_toStartOf="@+id/textViewPasswordRegister"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmailRegister" />
+
+    <TextView
+        android:id="@+id/textViewPassword2Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/repeat_password"
+        app:layout_constraintEnd_toStartOf="@+id/editTextPassword2Register"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPasswordRegister" />
+
+    <EditText
+        android:id="@+id/editTextLastNameRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewLastNameRegister"
+        app:layout_constraintEnd_toEndOf="@+id/editTextEmailRegister"
+        app:layout_constraintStart_toStartOf="@+id/editTextEmailRegister"
+        app:layout_constraintTop_toTopOf="@+id/textViewLastNameRegister"
+        app:layout_constraintVertical_bias="0.384" />
+
+    <EditText
+        android:id="@+id/editTextNameRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewNameRegister"
+        app:layout_constraintEnd_toEndOf="@+id/editTextLastNameRegister"
+        app:layout_constraintStart_toStartOf="@+id/editTextLastNameRegister"
+        app:layout_constraintTop_toTopOf="@+id/textViewNameRegister"
+        app:layout_constraintVertical_bias="0.384" />
+
+    <EditText
+        android:id="@+id/editTextEmailRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewEmailRegister"
+        app:layout_constraintEnd_toEndOf="@+id/editTextEmail2Register"
+        app:layout_constraintStart_toStartOf="@+id/editTextEmail2Register"
+        app:layout_constraintTop_toTopOf="@+id/textViewEmailRegister"
+        app:layout_constraintVertical_bias="0.384" />
+
+    <EditText
+        android:id="@+id/editTextEmail2Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewEmail2Register"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPasswordRegister"
+        app:layout_constraintStart_toStartOf="@+id/editTextPasswordRegister"
+        app:layout_constraintTop_toTopOf="@+id/textViewEmail2Register"
+        app:layout_constraintVertical_bias="0.384" />
+
+    <EditText
+        android:id="@+id/editTextPasswordRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPasswordRegister"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPassword2Register"
+        app:layout_constraintStart_toStartOf="@+id/editTextPassword2Register"
+        app:layout_constraintTop_toTopOf="@+id/textViewPasswordRegister"
+        app:layout_constraintVertical_bias="0.384" />
+
+    <EditText
+        android:id="@+id/editTextPassword2Register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewPassword2Register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/textViewPassword2Register"
+        app:layout_constraintVertical_bias="0.384" />
+
+    <TextView
+        android:id="@+id/textViewEmailRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/email"
+        app:layout_constraintEnd_toEndOf="@+id/textViewEmail2Register"
+        app:layout_constraintStart_toStartOf="@+id/textViewEmail2Register"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLastNameRegister" />
+
+    <TextView
+        android:id="@+id/textViewPasswordRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/password"
+        app:layout_constraintEnd_toEndOf="@+id/textViewPassword2Register"
+        app:layout_constraintStart_toStartOf="@+id/textViewPassword2Register"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEmail2Register" />
+
+    <Button
+        android:id="@+id/buttonRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:onClick="toInicial"
+        android:text="@string/Sing_Up"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/switchUserTypeRegister" />
+
+    <TextView
+        android:id="@+id/textViewUserTypeRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/userType"
+        app:layout_constraintEnd_toEndOf="@+id/textViewPassword2Register"
+        app:layout_constraintStart_toStartOf="@+id/textViewPassword2Register"
+        app:layout_constraintTop_toBottomOf="@+id/textViewPassword2Register" />
+
+    <Switch
+        android:id="@+id/switchUserTypeRegister"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/user"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewUserTypeRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/textViewUserTypeRegister"
+        app:layout_constraintTop_toTopOf="@+id/textViewUserTypeRegister" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

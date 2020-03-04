@@ -4,4 +4,13 @@
     <string name="password">Password</string>
     <string name="login">Login</string>
     <string name="Sing_Up">Sing Up</string>
+    <string name="name">Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="email">Email</string>
+    <string name="repeat_password">Repeat Password</string>
+    <string name="repeat_email">Repeat Email</string>
+    <string name="userType">User Type</string>
+    <string name="hair_dresser">Hair Dresser</string>
+    <string name="successful_register">Successful Register</string>
+    <string name="failed_register">Failed Register</string>
 </resources>
