@@ -13,4 +13,7 @@
     <string name="hair_dresser">Hair Dresser</string>
     <string name="successful_register">Successful Register</string>
     <string name="failed_register">Failed Register</string>
+    <string name="missing_data">Missing data</string>
+    <string name="authentication_failed">Authentication failed</string>
+    <string name="authentication_success">Authentication success</string>
 </resources>
