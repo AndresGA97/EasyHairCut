@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
-<!--Activity Title-->
+    <!--Activity Title-->
     <TextView
         android:id="@+id/textViewTitleRegister"
         android:layout_width="wrap_content"
@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-<!--TextView User name-->
+    <!--TextView User name-->
     <TextView
         android:id="@+id/textViewNameRegister"
         android:layout_width="wrap_content"
@@ -26,7 +26,7 @@
         app:layout_constraintHorizontal_bias="0.612"
         app:layout_constraintStart_toStartOf="@+id/textViewLastNameRegister"
         app:layout_constraintTop_toTopOf="parent" />
-<!--TextView User last name-->
+    <!--TextView User last name-->
     <TextView
         android:id="@+id/textViewLastNameRegister"
         android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="@+id/textViewEmailRegister"
         app:layout_constraintStart_toStartOf="@+id/textViewEmailRegister"
         app:layout_constraintTop_toBottomOf="@+id/textViewNameRegister" />
-<!--TextView Email Confirmation-->
+    <!--TextView Email Confirmation-->
     <TextView
         android:id="@+id/textViewEmail2Register"
         android:layout_width="wrap_content"
@@ -46,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="@+id/textViewPasswordRegister"
         app:layout_constraintStart_toStartOf="@+id/textViewPasswordRegister"
         app:layout_constraintTop_toBottomOf="@+id/textViewEmailRegister" />
-<!--TextView Password confirmation-->
+    <!--TextView Password confirmation-->
     <TextView
         android:id="@+id/textViewPassword2Register"
         android:layout_width="wrap_content"
@@ -56,7 +56,7 @@
         android:text="@string/repeat_password"
         app:layout_constraintEnd_toStartOf="@+id/editTextPassword2Register"
         app:layout_constraintTop_toBottomOf="@+id/textViewPasswordRegister" />
-<!--EditText Last name-->
+    <!--EditText Last name-->
     <EditText
         android:id="@+id/editTextLastNameRegister"
         android:layout_width="wrap_content"
@@ -68,7 +68,7 @@
         app:layout_constraintStart_toStartOf="@+id/editTextEmailRegister"
         app:layout_constraintTop_toTopOf="@+id/textViewLastNameRegister"
         app:layout_constraintVertical_bias="0.384" />
-<!--EditText Name-->
+    <!--EditText Name-->
     <EditText
         android:id="@+id/editTextNameRegister"
         android:layout_width="wrap_content"
@@ -80,7 +80,7 @@
         app:layout_constraintStart_toStartOf="@+id/editTextLastNameRegister"
         app:layout_constraintTop_toTopOf="@+id/textViewNameRegister"
         app:layout_constraintVertical_bias="0.384" />
-<!--EditText Email-->
+    <!--EditText Email-->
     <EditText
         android:id="@+id/editTextEmailRegister"
         android:layout_width="wrap_content"
@@ -92,7 +92,7 @@
         app:layout_constraintStart_toStartOf="@+id/editTextEmail2Register"
         app:layout_constraintTop_toTopOf="@+id/textViewEmailRegister"
         app:layout_constraintVertical_bias="0.384" />
-<!--EditText confirmation email-->
+    <!--EditText confirmation email-->
     <EditText
         android:id="@+id/editTextEmail2Register"
         android:layout_width="wrap_content"
@@ -104,7 +104,7 @@
         app:layout_constraintStart_toStartOf="@+id/editTextPasswordRegister"
         app:layout_constraintTop_toTopOf="@+id/textViewEmail2Register"
         app:layout_constraintVertical_bias="0.384" />
-<!--EditText password-->
+    <!--EditText password-->
     <EditText
         android:id="@+id/editTextPasswordRegister"
         android:layout_width="wrap_content"
@@ -116,7 +116,7 @@
         app:layout_constraintStart_toStartOf="@+id/editTextPassword2Register"
         app:layout_constraintTop_toTopOf="@+id/textViewPasswordRegister"
         app:layout_constraintVertical_bias="0.384" />
-<!--EditText confirmation password-->
+    <!--EditText confirmation password-->
     <EditText
         android:id="@+id/editTextPassword2Register"
         android:layout_width="wrap_content"
@@ -128,7 +128,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textViewPassword2Register"
         app:layout_constraintVertical_bias="0.384" />
-<!--Textview User email-->
+    <!--Textview User email-->
     <TextView
         android:id="@+id/textViewEmailRegister"
         android:layout_width="wrap_content"
@@ -138,7 +138,7 @@
         app:layout_constraintEnd_toEndOf="@+id/textViewEmail2Register"
         app:layout_constraintStart_toStartOf="@+id/textViewEmail2Register"
         app:layout_constraintTop_toBottomOf="@+id/textViewLastNameRegister" />
-<!--TextView user password-->
+    <!--TextView user password-->
     <TextView
         android:id="@+id/textViewPasswordRegister"
         android:layout_width="wrap_content"
@@ -148,7 +148,7 @@
         app:layout_constraintEnd_toEndOf="@+id/textViewPassword2Register"
         app:layout_constraintStart_toStartOf="@+id/textViewPassword2Register"
         app:layout_constraintTop_toBottomOf="@+id/textViewEmail2Register" />
-<!--Register button-->
+    <!--Register button-->
     <Button
         android:id="@+id/buttonRegister"
         android:layout_width="wrap_content"
@@ -160,7 +160,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/switchUserTypeRegister" />
-<!--Textview Account type-->
+    <!--Textview Account type-->
     <TextView
         android:id="@+id/textViewUserTypeRegister"
         android:layout_width="wrap_content"
@@ -170,16 +170,31 @@
         app:layout_constraintEnd_toEndOf="@+id/textViewPassword2Register"
         app:layout_constraintStart_toStartOf="@+id/textViewPassword2Register"
         app:layout_constraintTop_toBottomOf="@+id/textViewPassword2Register" />
-<!--Switch Account type-->
+    <!--Switch Account type-->
     <Switch
         android:id="@+id/switchUserTypeRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/user"
+        android:onClick="onClickTypeUser"
         app:layout_constraintBottom_toBottomOf="@+id/textViewUserTypeRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/textViewUserTypeRegister"
         app:layout_constraintTop_toTopOf="@+id/textViewUserTypeRegister" />
+
+    <TextView
+        android:id="@+id/textViewInfoError"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/info_register"
+        android:textAlignment="center"
+        android:textColor="#F44336"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonRegister" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

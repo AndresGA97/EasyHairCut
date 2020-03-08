@@ -16,4 +16,13 @@
     <string name="missing_data">Missing data</string>
     <string name="authentication_failed">Authentication failed</string>
     <string name="authentication_success">Authentication success</string>
+    <string name="email_no_valid">Email no valid</string>
+    <string name="password_no_valid">Password no valid</string>
+    <string name="email_not_match">Email not match</string>
+    <string name="password_not_match">Password not match</string>
+    <string name="pass_or_email_not_match">Password or email not match</string>
+    <string name="incorrect_data">Incorrect data</string>
+    <string name="info_register">Password must contain 6 characters and must match both emails and both passwords</string>
+    <string name="hairdresser">Hairdresser</string>
+    <string name="address">Address</string>
 </resources>
