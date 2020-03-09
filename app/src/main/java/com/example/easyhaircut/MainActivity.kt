@@ -34,11 +34,16 @@ class MainActivity : AppCompatActivity() {
      * change the actual activity to InicialActivity
      */
     fun toInicial(view: View) {
-        try{
-            login()
-        }catch (ex:MissingDataException){
-            Toast.makeText(this,getString(R.string.missing_data),Toast.LENGTH_LONG).show()
+        if(email.text.toString()!=""&&password.text.toString()!=""){
+            try{
+                login()
+            }catch (ex:MissingDataException){
+                Toast.makeText(this,getString(R.string.missing_data),Toast.LENGTH_LONG).show()
+            }
+        }else{
+            Toast.makeText(this, getString(R.string.missing_data),Toast.LENGTH_LONG).show()
         }
+
 
     }
 

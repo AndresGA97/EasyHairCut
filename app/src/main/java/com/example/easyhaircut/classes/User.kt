@@ -35,10 +35,7 @@ class User {
 
     fun searchUser(emailParam:String):User{
         lateinit var user:User
-        db.collection("users").document(emailParam).get().addOnSuccessListener {
-            documentSnapshot -> user=documentSnapshot.toObject(User::class.java) as User
-        }
-        return user
+        db.collection("users").document(emailParam).get()
     }
 
     fun persist(){
