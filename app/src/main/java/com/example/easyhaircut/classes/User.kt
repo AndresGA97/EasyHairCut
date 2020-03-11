@@ -1,7 +1,13 @@
 package com.example.easyhaircut.classes
 
 import android.util.Log
+import android.widget.Toast
+import androidx.core.os.HandlerCompat.postDelayed
+import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.concurrent.DelayQueue
+import java.util.logging.Handler
 
 class User {
     private lateinit var name:String
@@ -10,7 +16,7 @@ class User {
     private lateinit var password:String
 
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance() //Declare Firebase FireStore
-    constructor()
+
 
     constructor(name: String, lastName: String, email: String, password: String) {
         this.name = name
@@ -33,9 +39,17 @@ class User {
 
     }
 
-    fun searchUser(emailParam:String):User{
-        lateinit var user:User
-        db.collection("users").document(emailParam).get()
+    constructor(emailParam:String){
+        db.collection("users").document(emailParam).get().addOnCompleteListener { task ->
+            if(task.isSuccessful){
+                val resultado=task.result
+                this.name = resultado?.get("first").toString()
+                Log.i("nombre",resultado?.get("first").toString())
+                this.lastName = resultado?.get("last").toString()
+                this.email = resultado?.get("email").toString()
+                this.password = resultado?.get("password").toString()
+            }
+        }
     }
 
     fun persist(){
@@ -47,11 +61,5 @@ class User {
         db.collection("users").document(email).set(user)
     }
 
-    fun getName():String{
-        return this.name
-    }
-    fun setName(nameParam:String){
-        this.name=nameParam
-        persist()
-    }
+    fun getName():String{return this.name}
 }

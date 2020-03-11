@@ -2,6 +2,7 @@ package com.example.easyhaircut
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import com.example.easyhaircut.classes.User
@@ -13,11 +14,12 @@ class InicialActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_inicial)
         auth= FirebaseAuth.getInstance()
+        var prueba=User("andres.garcia.alarcon.97@gmail.com")
+        var prueba2=User("nombre","apelldo","email@gmai.com","123456")
+//        Log.i("prueba","nombre: "+prueba.getName())
     }
 
     fun prueba(view: View) {
-        var prueba:User=User()
-        prueba=prueba.searchUser("andres.garcia.alarcon.97@gmail.com")
-        println(prueba.getName())
+
     }
 }
