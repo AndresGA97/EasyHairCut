@@ -19,7 +19,4 @@ class InicialActivity : AppCompatActivity() {
 //        Log.i("prueba","nombre: "+prueba.getName())
     }
 
-    fun prueba(view: View) {
-
-    }
 }

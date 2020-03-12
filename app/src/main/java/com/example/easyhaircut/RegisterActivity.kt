@@ -142,7 +142,7 @@ class RegisterActivity : AppCompatActivity() {
             "password" to password.text.toString())
 
         //Insert user on fireStore
-        db.collection("hair dressers")
+        db.collection("hairdresser")
             .document(email.text.toString()).set(user)
             .addOnSuccessListener { documentReference -> }
             .addOnFailureListener { }

@@ -1,14 +1,12 @@
 package com.example.easyhaircut.classes
 
 import android.util.Log
-import android.widget.Toast
-import androidx.core.os.HandlerCompat.postDelayed
-import com.google.android.gms.tasks.OnSuccessListener
-import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.concurrent.DelayQueue
-import java.util.logging.Handler
 
+/**
+ * User class
+ * @author Andrés
+ */
 class User {
     private lateinit var name:String
     private lateinit var lastName:String
@@ -31,9 +29,9 @@ class User {
 
         //Insert user on fireStore
         db.collection("users")
-            .add(user)
+            .document(this.email).set(user)
             .addOnSuccessListener { documentReference -> Log.d("Successful register",
-                "DocumentSnapshot added with ID: ${documentReference.id}") }
+                this.email+" Successful register") }
             .addOnFailureListener { exception -> Log.w("Failed",
                 "Error adding document", exception) }
 
@@ -42,12 +40,15 @@ class User {
     constructor(emailParam:String){
         db.collection("users").document(emailParam).get().addOnCompleteListener { task ->
             if(task.isSuccessful){
-                val resultado=task.result
-                this.name = resultado?.get("first").toString()
-                Log.i("nombre",resultado?.get("first").toString())
-                this.lastName = resultado?.get("last").toString()
-                this.email = resultado?.get("email").toString()
-                this.password = resultado?.get("password").toString()
+                val result=task.result
+                this.name = result?.get("first").toString()
+                Log.i("nombre",result?.get("first").toString())
+                this.lastName = result?.get("last").toString()
+                Log.i("Apellidos", result?.get("last").toString())
+                this.email = result?.get("email").toString()
+                Log.i("email",result?.get("email").toString())
+                this.password = result?.get("password").toString()
+                Log.i("password",result?.get("password").toString())
             }
         }
     }
