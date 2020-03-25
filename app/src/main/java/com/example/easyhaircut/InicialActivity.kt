@@ -50,7 +50,4 @@ class InicialActivity : AppCompatActivity() {
         }
     }
 
-    fun prueba(view: View) {
-
-    }
 }

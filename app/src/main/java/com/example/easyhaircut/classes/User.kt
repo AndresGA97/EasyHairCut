@@ -8,9 +8,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
-import java.util.concurrent.DelayQueue
-import java.util.logging.Handler
 
+/**
+ * User class
+ * @author Andrés
+ */
 class User {
     private lateinit var name:String
     private lateinit var lastName:String
@@ -35,9 +37,9 @@ class User {
 
         //Insert user on fireStore
         db.collection("users")
-            .add(user)
+            .document(this.email).set(user)
             .addOnSuccessListener { documentReference -> Log.d("Successful register",
-                "DocumentSnapshot added with ID: ${documentReference.id}") }
+                this.email+" Successful register") }
             .addOnFailureListener { exception -> Log.w("Failed",
                 "Error adding document", exception) }
 
