@@ -4,6 +4,8 @@ import android.util.Log
 import android.widget.Toast
 import androidx.core.os.HandlerCompat.postDelayed
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.FirebaseFirestore
 import java.util.concurrent.DelayQueue
@@ -14,8 +16,10 @@ class User {
     private lateinit var lastName:String
     private lateinit var email:String
     private lateinit var password:String
+    private lateinit var userID:String
 
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance() //Declare Firebase FireStore
+    private var auth: FirebaseAuth= FirebaseAuth.getInstance()
 
 
     constructor(name: String, lastName: String, email: String, password: String) {
@@ -39,18 +43,6 @@ class User {
 
     }
 
-    constructor(emailParam:String){
-        db.collection("users").document(emailParam).get().addOnCompleteListener { task ->
-            if(task.isSuccessful){
-                val resultado=task.result
-                this.name = resultado?.get("first").toString()
-                Log.i("nombre",resultado?.get("first").toString())
-                this.lastName = resultado?.get("last").toString()
-                this.email = resultado?.get("email").toString()
-                this.password = resultado?.get("password").toString()
-            }
-        }
-    }
 
     fun persist(){
         val user= hashMapOf("first" to name,
@@ -60,6 +52,7 @@ class User {
 
         db.collection("users").document(email).set(user)
     }
-
-    fun getName():String{return this.name}
+    fun getName():String{
+        return this.name;
+    }
 }
