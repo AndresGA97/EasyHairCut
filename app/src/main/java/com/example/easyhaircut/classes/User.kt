@@ -18,22 +18,27 @@ class User {
     private lateinit var lastName:String
     private lateinit var email:String
     private lateinit var password:String
-    private lateinit var userID:String
+    private var age:Int=0
+    private var genre:Boolean = false //false male, true female
 
     private var db: FirebaseFirestore = FirebaseFirestore.getInstance() //Declare Firebase FireStore
     private var auth: FirebaseAuth= FirebaseAuth.getInstance()
 
 
-    constructor(name: String, lastName: String, email: String, password: String) {
+    constructor(name: String, lastName: String, email: String, password: String, age:Int, genre:Boolean) {
         this.name = name
         this.lastName = lastName
         this.email = email
         this.password = password
+        this.age=age
+        this.genre=genre
 
         val user= hashMapOf("first" to name,
             "last" to lastName,
             "email" to email,
-            "password" to password)
+            "password" to password,
+            "age" to age,
+            "genre" to genre)
 
         //Insert user on fireStore
         db.collection("users")
@@ -50,7 +55,9 @@ class User {
         val user= hashMapOf("first" to name,
             "last" to lastName,
             "email" to email,
-            "password" to password)
+            "password" to password,
+            "age" to age,
+            "genre" to genre)
 
         db.collection("users").document(email).set(user)
     }

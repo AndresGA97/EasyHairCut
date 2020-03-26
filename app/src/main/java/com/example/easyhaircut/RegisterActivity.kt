@@ -98,7 +98,7 @@ class RegisterActivity : AppCompatActivity() {
             if(password.text.toString().equals(password2.text.toString()) && email.text.toString().equals(email2.text.toString())){
                 authUser()
             }else{
-                Toast.makeText(this,getString(R.string.pass_or_email_not_match),Toast.LENGTH_LONG).show()
+                //Register error
                 emptyField()
                 info.visibility=TextView.VISIBLE
             }

@@ -41,10 +41,10 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this,getString(R.string.missing_data),Toast.LENGTH_LONG).show()
             }
         }else{
+            //Login error
             Toast.makeText(this, getString(R.string.missing_data),Toast.LENGTH_LONG).show()
+            emptyField()
         }
-
-
     }
 
     /**
@@ -58,7 +58,17 @@ class MainActivity : AppCompatActivity() {
             var intent:Intent=Intent(this, InicialActivity::class.java)
             startActivity(intent)
         }else{
+            //Login error
+            Toast.makeText(this, getString(R.string.incorrect_data),Toast.LENGTH_SHORT).show()
+            emptyField()
         }
         })
+    }
+    /**
+     * Empty all editText from Register screen
+     */
+    private fun emptyField(){
+        email.setText("")
+        password.setText("")
     }
 }
