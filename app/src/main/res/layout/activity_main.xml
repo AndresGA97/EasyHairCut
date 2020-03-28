@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-<!--App Title TextView-->
+    <!--App Title TextView-->
     <TextView
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
@@ -15,7 +15,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-<!--User TextView-->
+    <!--User TextView-->
     <TextView
         android:id="@+id/textViewUser"
         android:layout_width="wrap_content"
@@ -26,7 +26,7 @@
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editTextUser" />
-<!--Password TextView-->
+    <!--Password TextView-->
     <TextView
         android:id="@+id/textViewPassword"
         android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
         app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/editTextPassword" />
-<!--User EditText-->
+    <!--User EditText-->
     <EditText
         android:id="@+id/editTextUser"
         android:layout_width="wrap_content"
@@ -49,7 +49,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitle" />
-<!--Password EditText-->
+    <!--Password EditText-->
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="wrap_content"
@@ -61,28 +61,39 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextUser" />
-<!--Login Button-->
+    <!--Login Button-->
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="70dp"
-        android:text="@string/login"
         android:onClick="toInicial"
+        android:text="@string/login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextPassword" />
-<!--Register Button-->
+    <!--Register Button-->
     <Button
-        android:id="@+id/buttonSingUp"
+        android:id="@+id/buttonSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="@string/Sing_Up"
         android:onClick="toRegisterActivity"
+        android:text="@string/Sing_Up"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+
+    <com.google.android.gms.common.SignInButton
+        android:id="@+id/buttonGoogleSignIn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonSignUp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
