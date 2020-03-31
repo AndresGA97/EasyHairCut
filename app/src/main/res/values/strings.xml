@@ -29,6 +29,7 @@
     <string name="profile">Profile</string>
     <string name="settings">Settings</string>
     <string name="map">Map</string>
+    <string name="location_denied">Location permits previously denied, switch on manually</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

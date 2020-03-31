@@ -1,5 +1,7 @@
 package com.example.easyhaircut
 
+import android.Manifest
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.TextUtils.replace
@@ -7,6 +9,9 @@ import android.util.Log
 import android.view.View
 import android.widget.Switch
 import android.widget.TextView
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
@@ -42,6 +47,19 @@ class InicialActivity : AppCompatActivity() {
 
         auth= FirebaseAuth.getInstance()
         db= FirebaseFirestore.getInstance()
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
+            == PackageManager.PERMISSION_GRANTED) {
+            //TODO que hacer al tener los permisos
+        } else {
+            // Permission to access the location is missing. Show rationale and request permission
+            if(!ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.ACCESS_FINE_LOCATION)){
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.ACCESS_FINE_LOCATION),1)
+            }else{
+                Toast.makeText(this, getString(R.string.location_denied), Toast.LENGTH_LONG).show()
+
+            }
+        }
 
     }
 
