@@ -18,6 +18,7 @@ import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
     private val password: EditText by lazy { findViewById<EditText>(R.id.editTextPassword) }
     private lateinit var mGoogleSignInClient:GoogleSignInClient
     private lateinit var signInButton:SignInButton
+    private lateinit var db: FirebaseFirestore //Declare Firebase FireStore
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         signInButton=findViewById(R.id.buttonGoogleSignIn)//Google sign in button
         auth= FirebaseAuth.getInstance()//Initialize Firebase Auth
+        db= FirebaseFirestore.getInstance()
         // Configure Google Sign In
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
@@ -43,7 +46,11 @@ class MainActivity : AppCompatActivity() {
         // Check for existing Google Sign In account, if the user is already signed in
         var account=GoogleSignIn.getLastSignedInAccount(this)
         signInButton.setOnClickListener(View.OnClickListener {
-            signIn()
+            if (account != null) {
+                registerUserDB(account.displayName, account.familyName, account.email)
+                signIn()
+            }
+
         })
     }
 
@@ -139,5 +146,23 @@ class MainActivity : AppCompatActivity() {
             Log.w("GoogleLogin", "signInResult:failed code=" + e.statusCode)
         }
     }
+    /**
+     * Register the user values on database
+     */
+    private fun registerUserDB(name:String?, lastName:String?, email:String?) {
+        val user= hashMapOf("first" to name,
+            "last" to lastName,
+            "email" to email)
 
+        //Insert user on fireStore
+        if (email != null) {
+            db.collection("users")
+                .document(email).set(user)
+                .addOnSuccessListener { documentReference ->  }
+                .addOnFailureListener { }
+        }
+        //Changing actualActivity
+        var intent: Intent = Intent(this,InicialActivity::class.java)
+        startActivity(intent)
+    }
 }
