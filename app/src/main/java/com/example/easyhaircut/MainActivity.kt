@@ -1,13 +1,17 @@
 package com.example.easyhaircut
 
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.easyhaircut.classes.Dates
+import com.example.easyhaircut.classes.User
 import com.example.easyhaircut.exception.MissingDataException
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -17,7 +21,11 @@ import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
+import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
 
 
@@ -28,6 +36,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var mGoogleSignInClient:GoogleSignInClient
     private lateinit var signInButton:SignInButton
     private lateinit var db: FirebaseFirestore //Declare Firebase FireStore
+    private lateinit var userRef: DocumentReference
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,11 +55,11 @@ class MainActivity : AppCompatActivity() {
         // Check for existing Google Sign In account, if the user is already signed in
         var account=GoogleSignIn.getLastSignedInAccount(this)
         signInButton.setOnClickListener(View.OnClickListener {
+            signIn()
             if (account != null) {
-                registerUserDB(account.displayName, account.familyName, account.email)
-                signIn()
+                userRef=db.collection("users").document(account.email!!);
+                registerUserDB(account.givenName!!, account.familyName!!, account.email!!)
             }
-
         })
     }
 
@@ -110,6 +119,7 @@ class MainActivity : AppCompatActivity() {
     private fun signIn() {
         val signInIntent: Intent = mGoogleSignInClient.signInIntent
         startActivityForResult(signInIntent, 1)
+
     }
 
     /**
@@ -119,14 +129,15 @@ class MainActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
 
         // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
-
-        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
         if (requestCode === 1) {
             // The Task returned from this call is always completed, no need to attach
             // a listener.
             val task =
                 GoogleSignIn.getSignedInAccountFromIntent(data)
-            handleSignInResult(task)
+                // Google Sign In was successful, authenticate with Firebase
+                val account = task.getResult(ApiException::class.java)
+                firebaseAuthWithGoogle(account!!)
+                handleSignInResult(task)
         }
     }
 
@@ -137,6 +148,11 @@ class MainActivity : AppCompatActivity() {
         try {
             val account =
                 completedTask.getResult(ApiException::class.java)
+
+            if (account != null) {
+                userRef=db.collection("users").document(account.email!!);
+                registerUserDB(account.givenName!!, account.familyName!!, account.email!!)
+            }
             var intent:Intent=Intent(this, InicialActivity::class.java)
             intent.putExtra("accountGoogle",account)
             startActivity(intent)
@@ -146,23 +162,44 @@ class MainActivity : AppCompatActivity() {
             Log.w("GoogleLogin", "signInResult:failed code=" + e.statusCode)
         }
     }
+
     /**
      * Register the user values on database
      */
-    private fun registerUserDB(name:String?, lastName:String?, email:String?) {
-        val user= hashMapOf("first" to name,
-            "last" to lastName,
-            "email" to email)
+    private fun registerUserDB(name:String, lastName:String, email:String) {
+        var user: User = User(name, lastName, email, password.text.toString(),ArrayList<Dates>())
 
         //Insert user on fireStore
-        if (email != null) {
-            db.collection("users")
-                .document(email).set(user)
-                .addOnSuccessListener { documentReference ->  }
-                .addOnFailureListener { }
-        }
+        userRef.set(user)
+            .addOnSuccessListener { documentReference ->  }
+            .addOnFailureListener { }
+
+        var preferences: SharedPreferences =getSharedPreferences("userType", Context.MODE_PRIVATE)
+        var editor: SharedPreferences.Editor=preferences.edit()
+        editor.putBoolean("user", true)
+        editor.commit()
+
         //Changing actualActivity
         var intent: Intent = Intent(this,InicialActivity::class.java)
         startActivity(intent)
+    }
+
+    private fun firebaseAuthWithGoogle(acct: GoogleSignInAccount) {
+
+        val credential = GoogleAuthProvider.getCredential(acct.idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    val user = auth.currentUser
+                    if (user != null) {
+                        auth.updateCurrentUser(user)
+                    }
+                } else {
+                    // If sign in fails, display a message to the user.
+
+                }
+
+            }
     }
 }

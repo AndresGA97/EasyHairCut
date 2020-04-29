@@ -36,18 +36,15 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     ): View? {
         // Inflate the layout for this fragment
         inflateView = inflater.inflate(R.layout.fragment_map, container, false)
-        //Declare map fragment
-        var mapFragment:SupportMapFragment= childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
-        mapFragment.getMapAsync(this)
 
         //actual position
         loadCoordinate()
         Log.i("latitude", latitude.toString())
         Log.i("longitude", longitude.toString())
 
-        //TODO reading google api place
-
-
+        //Declare map fragment
+        var mapFragment:SupportMapFragment= childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
         return inflateView
     }
 
@@ -61,11 +58,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         map.moveCamera(CameraUpdateFactory.newLatLng(actualPosition))
     }
 
-    override fun onAttach(context: Context?) {
-        super.onAttach(context)
-        arguments?.getDouble("latitude")?.let { latitude=it }
-        arguments?.getDouble("longitude")?.let { longitude=it }
-    }
     private fun loadCoordinate(){
         var preferences: SharedPreferences =context!!.getSharedPreferences("coordinates", Context.MODE_PRIVATE)
         latitude=preferences.getString("latitude", "0.0")!!.toDouble()
