@@ -1,5 +1,6 @@
 package com.example.easyhaircut.fragments
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -9,14 +10,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.easyhaircut.HairdresserAdapter
+import com.example.easyhaircut.HairdresserItem
 import com.example.easyhaircut.R
+import com.example.easyhaircut.classes.Dates
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.DocumentSnapshot
-import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.*
 
 
 /**
@@ -30,6 +34,11 @@ class ProfileFragment : Fragment() {
     private lateinit var userRef:DocumentReference
     private var account: GoogleSignInAccount?=null
 
+    private lateinit var recyclerView: RecyclerView;
+    private lateinit var adapter: HairdresserAdapter
+    private lateinit var layoutManager: RecyclerView.LayoutManager
+    private lateinit var hairdresserList:ArrayList<HairdresserItem>
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +46,7 @@ class ProfileFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         inflateView= inflater.inflate(R.layout.fragment_profile, container, false)
+        hairdresserList=ArrayList<HairdresserItem>()
 
         var intent=activity!!.intent
         account=intent.getParcelableExtra("accountGoogle")
@@ -62,6 +72,9 @@ class ProfileFragment : Fragment() {
 
                     var user: MutableMap<String, Any>? = documentSnapshot.data;
                     name.text = user!!.get("first").toString()
+                    var dates=user!!.get("dates") as ArrayList<Dates>
+
+
                 } else {
                     Toast.makeText(
                         context,"Document does not exist",Toast.LENGTH_SHORT).show()
@@ -71,4 +84,5 @@ class ProfileFragment : Fragment() {
                 Toast.makeText(context, "Error!", Toast.LENGTH_SHORT).show()
             })
     }
+
 }

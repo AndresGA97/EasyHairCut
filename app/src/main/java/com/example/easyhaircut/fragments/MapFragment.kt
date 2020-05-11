@@ -2,23 +2,16 @@ package com.example.easyhaircut.fragments
 
 import android.content.Context
 import android.content.SharedPreferences
-import android.location.Location
-import android.location.LocationManager
 import android.os.Bundle
-import android.util.JsonReader
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.getSystemService
 import androidx.fragment.app.Fragment
 import com.example.easyhaircut.R
 import com.google.android.gms.maps.*
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import com.google.gson.GsonBuilder
-import java.io.InputStream
-import java.io.InputStreamReader
 
 
 /**
@@ -43,7 +36,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         Log.i("longitude", longitude.toString())
 
         //Declare map fragment
-        var mapFragment:SupportMapFragment= childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        var mapFragment:SupportMapFragment= childFragmentManager.findFragmentById(R.id.mapDates) as SupportMapFragment
         mapFragment.getMapAsync(this)
         return inflateView
     }

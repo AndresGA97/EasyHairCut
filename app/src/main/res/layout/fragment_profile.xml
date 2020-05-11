@@ -1,22 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <!--LinearLayout para apilar los layout hijos en vertical-->
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <!--ConstraintLayout para delimitar el espacio de la imagen de cabecera-->
-
-        <!--ConstraintLayout para delimitar el espacio para la presentación breve del Usuario-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <!--TextView con el nombre del Usuario-->
             <TextView
                 android:id="@+id/textViewProfileName"
                 android:layout_width="0dp"
@@ -31,30 +25,28 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-            <!--TextView con la descripción breve del usuario-->
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <!--ConstraintLayout para delimitar el espacio de la presentación completa del usuario-->
-        <!--        RelativeLayout que contiene un RecyclerView para los tipos de suscripcion-->
-        <androidx.constraintlayout.widget.ConstraintLayout
+       <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fillViewport="true">
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="5dp"
-                android:textAlignment="center"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@+id/recycleViewActualDate"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+           <TextView
+               android:id="@+id/textViewActualDates"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="8dp"
+               android:layout_marginEnd="8dp"
+               android:layout_marginBottom="5dp"
+               android:text="@string/actual_dates"
+               android:textAlignment="center"
+               android:textSize="30sp"
+               android:textStyle="bold"
+               app:layout_constraintBottom_toTopOf="@+id/recycleViewActualDate"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:layout_constraintStart_toStartOf="parent"
+               app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycleViewActualDate"
@@ -68,26 +60,23 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
-        <!--ContraintLayout para organizar los componentes del apartado "Post recientes"-->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <!--TextView con el titulo del aparatado "Post Recientes-->
+
             <TextView
                 android:id="@+id/textViewRecentDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
+                android:text="@string/recent_dates"
                 android:textAlignment="center"
                 android:textSize="30sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-            <!--Button para cargar mas Post recientes-->
-            <!--            RelativeLayout que contiene un RecyclerView para los postRecientes-->
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerRecentDate"
                 android:layout_width="match_parent"

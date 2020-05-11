@@ -30,6 +30,10 @@
     <string name="settings">Settings</string>
     <string name="map">Map</string>
     <string name="location_denied">Location permits previously denied, switch on manually</string>
+    <string name="recent_dates">Recent Dates</string>
+    <string name="actual_dates">Actual Dates</string>
+    <string name="add_date">Add Date</string>
+    <string name="add_date_description">Add new date for this hairdresser</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
