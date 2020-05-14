@@ -3,6 +3,7 @@ package com.example.easyhaircut.fragments
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,9 @@ import android.widget.CalendarView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import com.example.easyhaircut.R
+import com.example.easyhaircut.alerts.AlertAddDate
 import com.example.easyhaircut.classes.Hairdresser
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -68,10 +71,10 @@ class HairdresserDatesFragment : Fragment(), OnMapReadyCallback {
 
         //CalendarView
         calendarView.setOnDateChangeListener(CalendarView.OnDateChangeListener { view, year, month, dayOfMonth ->
-            Toast.makeText(context, dayOfMonth.toString()+"/"+month+"/"+year, Toast.LENGTH_SHORT).show()
-        }
-
-        )
+            var fragmentManager: FragmentManager? = fragmentManager
+            var alert: AlertAddDate =AlertAddDate(this.activity!!, year, month, dayOfMonth, hairdresserName)
+            alert.show(fragmentManager!!,"alert")
+        })
     }
 
     override fun onMapReady(p0: GoogleMap?) {
