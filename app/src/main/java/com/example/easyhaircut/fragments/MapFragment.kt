@@ -23,6 +23,10 @@ import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
+import java.sql.Timestamp
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 
 /**
@@ -123,9 +127,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnMarkerClickListe
                     var latLng= LatLng(address.get("latitude")!!, address.get("longitude")!!)
                     var email:String=data["email"] as String
                     var password:String=data["password"] as String
-                    var dates:ArrayList<Dates> = data["dates"] as ArrayList<Dates>
-
-                    var actualHairdresser=Hairdresser(name, latLng, email, password, dates)
+                    var actualHairdresser=Hairdresser(name, latLng, email, password)
                     hairdresserList.add(actualHairdresser)
 
                     map.addMarker(MarkerOptions().position(latLng).title(name))

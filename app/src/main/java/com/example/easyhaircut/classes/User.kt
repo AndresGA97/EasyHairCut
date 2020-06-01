@@ -7,7 +7,7 @@ import kotlin.collections.ArrayList
  * @author Andrés
  */
 class User {
-    lateinit var first:String
+    lateinit var name:String
     lateinit var last:String
     lateinit var email:String
     lateinit var password:String
@@ -15,7 +15,7 @@ class User {
 
 
     constructor(name: String, lastName: String, email: String, password: String, paramDates:ArrayList<Dates>) {
-        this.first = name
+        this.name = name
         this.last = lastName
         this.email = email
         this.password = password

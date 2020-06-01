@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.example.easyhaircut.R
 import com.example.easyhaircut.alerts.AlertAddDate
+import com.example.easyhaircut.classes.Dates
 import com.example.easyhaircut.classes.Hairdresser
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -42,6 +43,7 @@ class HairdresserDatesFragment : Fragment(), OnMapReadyCallback {
     private var hairdresserRef: CollectionReference =db.collection("hairdresser")
 
     private var hairdresserName:String=""
+    private var hairdresserEmail=""
 
     lateinit var calendarView:CalendarView
 
@@ -50,9 +52,15 @@ class HairdresserDatesFragment : Fragment(), OnMapReadyCallback {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        loadHairdresserName()
+        loadHairdressers()
+
         // Inflate the layout for this fragment
         inflateView=inflater.inflate(R.layout.fragment_hairdresser_dates, container, false)
 
+        //Declare map fragment
+        var mapFragment:SupportMapFragment= childFragmentManager.findFragmentById(R.id.mapDates) as SupportMapFragment
+        mapFragment.getMapAsync(this)
         return inflateView
     }
 
@@ -60,21 +68,7 @@ class HairdresserDatesFragment : Fragment(), OnMapReadyCallback {
         super.onActivityCreated(savedInstanceState)
         name= inflateView!!.findViewById(R.id.textViewHairdresserName)
         calendarView=inflateView!!.findViewById(R.id.calendarViewDates)
-
-        loadHairdresserName()
-        loadHairdressers(context!!)
         name.setText(hairdresserName)
-
-        //Declare map fragment
-        var mapFragment: SupportMapFragment = childFragmentManager.findFragmentById(R.id.mapDates) as SupportMapFragment
-        mapFragment.getMapAsync(this)
-
-        //CalendarView
-        calendarView.setOnDateChangeListener(CalendarView.OnDateChangeListener { view, year, month, dayOfMonth ->
-            var fragmentManager: FragmentManager? = fragmentManager
-            var alert: AlertAddDate =AlertAddDate(this.activity!!, year, month, dayOfMonth, hairdresserName)
-            alert.show(fragmentManager!!,"alert")
-        })
     }
 
     override fun onMapReady(p0: GoogleMap?) {
@@ -84,15 +78,28 @@ class HairdresserDatesFragment : Fragment(), OnMapReadyCallback {
         map.moveCamera(CameraUpdateFactory.newLatLng(actualPosition))
     }
 
-    private fun loadHairdressers(context: Context){
+    private fun loadHairdressers(){
         hairdresserRef.whereEqualTo("name", hairdresserName)
             .get()
             .addOnSuccessListener(OnSuccessListener<QuerySnapshot> { queryDocumentSnapshots ->
                 for (documentSnapshot in queryDocumentSnapshots) {
-                    var actualHairdresser:Hairdresser=documentSnapshot.toObject(Hairdresser::class.java)
-                    Toast.makeText(context, actualHairdresser.email, Toast.LENGTH_SHORT).show()
+                    var name=documentSnapshot.get("name") as String
+                    var address=documentSnapshot.get("address") as HashMap<String, Double>
+                    var latLng= LatLng(address.get("latitude")!!, address.get("longitude")!!)
+                    var email=documentSnapshot.get("email") as String
+                    var password=documentSnapshot.get("password") as String
+                    var dates= ArrayList<Dates>()
+                    var actualHairdresser:Hairdresser= Hairdresser(name, latLng, email, password, dates)
+                    hairdresserEmail=actualHairdresser.email
                     latitude=actualHairdresser.address["latitude"]as Double
                     longitude=actualHairdresser.address["longitude"]as Double
+
+                    //CalendarView
+                    calendarView.setOnDateChangeListener(CalendarView.OnDateChangeListener { view, year, month, dayOfMonth ->
+                        var fragmentManager: FragmentManager? = fragmentManager
+                        var alert: AlertAddDate =AlertAddDate(this.activity!!, year, month+1, dayOfMonth, hairdresserEmail)
+                        alert.show(fragmentManager!!,"alert")
+                    })
                 }
             }).addOnFailureListener(OnFailureListener { e ->
                 e.message
@@ -103,5 +110,6 @@ class HairdresserDatesFragment : Fragment(), OnMapReadyCallback {
         hairdresserName=preferences.getString("name", "")!!
 
     }
+
 
 }

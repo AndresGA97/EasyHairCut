@@ -3,11 +3,11 @@ package com.example.easyhaircut.classes
 import java.util.*
 
 class Dates {
-    private var date:Date
-    private var hairdresser: Hairdresser
+    var date:Date
+    var name:String
 
-    constructor(date: Date, hairdresser: Hairdresser) {
+    constructor(date: Date, name:String) {
         this.date = date
-        this.hairdresser = hairdresser
+        this.name = name
     }
 }

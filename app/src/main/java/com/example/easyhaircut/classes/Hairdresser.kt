@@ -3,7 +3,11 @@ package com.example.easyhaircut.classes
 import android.location.Address
 import android.util.Log
 import com.google.android.gms.maps.model.LatLng
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.FirebaseFirestore
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.HashMap
 
 /**
  * Hairdresser class
@@ -24,6 +28,14 @@ class Hairdresser {
         this.email=paramEmail
         this.password=paramPassword
         this.dates=paramDates
+    }
+    constructor(paramName:String, paramAddress:LatLng?, paramEmail:String, paramPassword:String){
+        this.name=paramName;
+        address.put("latitude", paramAddress!!.latitude)
+        address.put("longitude", paramAddress!!.longitude)
+        this.email=paramEmail
+        this.password=paramPassword
+        this.dates=ArrayList()
     }
 
     constructor()

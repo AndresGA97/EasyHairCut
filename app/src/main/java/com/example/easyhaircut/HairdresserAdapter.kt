@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 class HairdresserAdapter(exampleList: ArrayList<HairdresserItem>, onHairdresserListener: OnHairdresserListener) :
     RecyclerView.Adapter<HairdresserAdapter.HairdresserViewHolder>() {
     private val hairdresserList: ArrayList<HairdresserItem>
-    private lateinit var onHairdresserListener:OnHairdresserListener
+    private var onHairdresserListener:OnHairdresserListener
 
     class HairdresserViewHolder(itemView: View, onHairdresserListener: OnHairdresserListener) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
         var mTextView1: TextView
@@ -27,19 +27,13 @@ class HairdresserAdapter(exampleList: ArrayList<HairdresserItem>, onHairdresserL
         }
     }
 
-    override fun onCreateViewHolder(
-        parent: ViewGroup,
-        viewType: Int
-    ): HairdresserViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HairdresserViewHolder {
         val v: View =
             LayoutInflater.from(parent.context).inflate(R.layout.hairdresser_item, parent, false)
         return HairdresserViewHolder(v, onHairdresserListener)
     }
 
-    override fun onBindViewHolder(
-        holder: HairdresserViewHolder,
-        position: Int
-    ) {
+    override fun onBindViewHolder(holder: HairdresserViewHolder, position: Int) {
         val currentItem: HairdresserItem = hairdresserList[position]
         holder.mTextView1.setText(currentItem.hairdresserName )
     }

@@ -34,6 +34,8 @@
     <string name="actual_dates">Actual Dates</string>
     <string name="add_date">Add Date</string>
     <string name="add_date_description">Add new date for this hairdresser</string>
+    <string name="accept_date">Do you want to confirm this date?</string>
+    <string name="hour">Hour</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>

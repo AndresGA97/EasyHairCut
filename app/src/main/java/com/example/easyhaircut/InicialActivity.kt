@@ -62,21 +62,6 @@ class InicialActivity : AppCompatActivity() {
         auth= FirebaseAuth.getInstance()
         db= FirebaseFirestore.getInstance()
 
-        //user loging type
-        var preferences: SharedPreferences =this!!.getSharedPreferences("userType", Context.MODE_PRIVATE)
-
-        //checking if actual user is hairdresser or normal user
-        if(preferences.getBoolean("user",true)){
-
-            var intent=intent
-            account=intent.getParcelableExtra("accountGoogle")
-            if(account!=null){
-                userRef=db.collection("users").document(account!!.email.toString())
-            }else{
-                userRef=db.collection("users").document(auth.currentUser?.email.toString())
-            }
-            loadUser()
-        }
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
             == PackageManager.PERMISSION_GRANTED) {
@@ -152,24 +137,23 @@ class InicialActivity : AppCompatActivity() {
     /**
      * Load user from database
      */
-    private fun loadUser() {
+    private fun loadUser():Boolean {
+        var success=false
         userRef.get()
             .addOnSuccessListener(OnSuccessListener<DocumentSnapshot> { documentSnapshot ->
                 if (documentSnapshot.exists()) {
                     actualUser= documentSnapshot.toObject<User>(User::class.java)!!
-                    //TODO
+                    success=true
                 } else {
-                    Toast.makeText(
-                        this,
-                        "Document does not exist",
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    //Toast.makeText(this, "Document does not exist", Toast.LENGTH_SHORT).show()
+                    success=false
                 }
             })
             .addOnFailureListener(OnFailureListener { e ->
-                Toast.makeText(this, "Error!", Toast.LENGTH_SHORT).show()
-                Log.i("error cuenta", e.message)
+                Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+
             })
+        return success
     }
 
 }

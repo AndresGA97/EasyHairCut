@@ -80,6 +80,7 @@ class HomeFragment : Fragment(), HairdresserAdapter.OnHairdresserListener {
                     name=documentSnapshot["name"].toString()
 
                     hairdresserList.add(HairdresserItem(name, context))
+                    //inflate recyclerView
                     recyclerView=inflateView!!.findViewById(R.id.recyclerView_hairdresser)
                     recyclerView.setHasFixedSize(true)
                     layoutManager=LinearLayoutManager(context)
