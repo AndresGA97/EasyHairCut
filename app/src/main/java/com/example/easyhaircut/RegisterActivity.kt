@@ -3,6 +3,7 @@ package com.example.easyhaircut
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.graphics.drawable.AnimationDrawable
 import android.location.Address
 import android.location.Geocoder
 import android.os.Bundle
@@ -13,6 +14,7 @@ import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.easyhaircut.classes.Dates
 import com.example.easyhaircut.classes.Hairdresser
 import com.example.easyhaircut.classes.User
@@ -44,6 +46,13 @@ class RegisterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
+        //animation Background gradient
+        val constraintLayout: ConstraintLayout = findViewById(R.id.constraintRegister)
+        val animationDrawable: AnimationDrawable = constraintLayout.background as AnimationDrawable
+        animationDrawable.setEnterFadeDuration(2000)
+        animationDrawable.setExitFadeDuration(4000)
+        animationDrawable.start()
+
         auth= FirebaseAuth.getInstance()//Initialize Firebase Auth
         db= FirebaseFirestore.getInstance()
 

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Easy HairCut</string>
+    <string name="user">Usuario</string>
+    <string name="password">Contraseña</string>
+    <string name="login">Iniciar Sesión</string>
+    <string name="Sing_Up">Registrarse</string>
+    <string name="name">Nombre</string>
+    <string name="last_name">Apellidos</string>
+    <string name="email">Email</string>
+    <string name="repeat_password">Repetir Contraseña</string>
+    <string name="repeat_email">Repetir Email</string>
+    <string name="userType">Tipo de Usuario</string>
+    <string name="hair_dresser">Peluquero</string>
+    <string name="successful_register">Registro Exitoso</string>
+    <string name="failed_register">Registro Fallido</string>
+    <string name="missing_data">Faltan Datos</string>
+    <string name="authentication_failed">Autentificación Fallida</string>
+    <string name="authentication_success">Autentificación Exitosa</string>
+    <string name="email_no_valid">Email no válido</string>
+    <string name="password_no_valid">Contraseña no válida</string>
+    <string name="email_not_match">Email no coincide</string>
+    <string name="password_not_match">Contraseña no coincide</string>
+    <string name="pass_or_email_not_match">Contraseña o Email no coinciden</string>
+    <string name="incorrect_data">Datos Incorrectos</string>
+    <string name="info_register">La contraseña debe contener 6 caracteres mínimo</string>
+    <string name="hairdresser">Peluqueria</string>
+    <string name="address">Dirección</string>
+    <string name="home">Inicio</string>
+    <string name="profile">Perfil</string>
+    <string name="settings">Ajustes</string>
+    <string name="map">Mapa</string>
+    <string name="location_denied">Permisos de localización previamente denegados, cambialos manualmente</string>
+    <string name="recent_dates">Citas Recientes</string>
+    <string name="actual_dates">Citas Actuales</string>
+    <string name="add_date">Añadir Cita</string>
+    <string name="add_date_description">Añadir nueva cita para esta Peluqueria</string>
+    <string name="accept_date">¿Quieres confirmar la cita?</string>
+    <string name="hour">Hora</string>
+    <string name="cite_no_available">Fecha no disponible</string>
+    <string name="date_confirm">Fecha confirmada con exito</string>
+    <string name="change_schedule">Cambiar Horario</string>
+    <string name="accept">Aceptar</string>
+    <string name="change_saved">Cambios guardados</string>
+</resources>

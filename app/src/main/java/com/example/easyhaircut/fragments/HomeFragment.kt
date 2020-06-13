@@ -17,6 +17,7 @@ import com.example.easyhaircut.HairdresserAdapter
 import com.example.easyhaircut.HairdresserItem
 import com.example.easyhaircut.R
 import com.google.android.gms.tasks.OnSuccessListener
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
@@ -37,6 +38,7 @@ class HomeFragment : Fragment(), HairdresserAdapter.OnHairdresserListener {
     lateinit var hairdresserList:ArrayList<HairdresserItem>
 
     private var db:FirebaseFirestore= FirebaseFirestore.getInstance()
+    private val auth: FirebaseAuth = FirebaseAuth.getInstance()
     private var hairdresserRef:CollectionReference=db.collection("hairdresser")
 
     var name:String=""
@@ -61,7 +63,6 @@ class HomeFragment : Fragment(), HairdresserAdapter.OnHairdresserListener {
      * Function of recyclerView Click
      */
     override fun hairdresserClick(position: Int) {
-        Toast.makeText(context, "Clicked "+hairdresserList.get(position).hairdresserName, Toast.LENGTH_SHORT).show()
         saveHairdresserName(position)
         var fragmentManager: FragmentManager? = fragmentManager
         if (fragmentManager != null) {
@@ -78,7 +79,7 @@ class HomeFragment : Fragment(), HairdresserAdapter.OnHairdresserListener {
             .addOnSuccessListener(OnSuccessListener<QuerySnapshot> { queryDocumentSnapshots ->
                 for (documentSnapshot in queryDocumentSnapshots) {
                     name=documentSnapshot["name"].toString()
-
+                    var email=documentSnapshot["email"].toString()
                     hairdresserList.add(HairdresserItem(name, context))
                     //inflate recyclerView
                     recyclerView=inflateView!!.findViewById(R.id.recyclerView_hairdresser)
@@ -87,6 +88,18 @@ class HomeFragment : Fragment(), HairdresserAdapter.OnHairdresserListener {
                     adapter= HairdresserAdapter(hairdresserList, this)
                     recyclerView.layoutManager=layoutManager
                     recyclerView.adapter=adapter
+
+                    if(auth.currentUser!!.email==email){
+                        var preferences=this.activity!!.getSharedPreferences("userType", Context.MODE_PRIVATE)
+                        var editor:SharedPreferences.Editor=preferences.edit()
+                        editor.putBoolean("user", true)
+                        editor.commit()
+                    }else{
+                        var preferences=this.activity!!.getSharedPreferences("userType", Context.MODE_PRIVATE)
+                        var editor:SharedPreferences.Editor=preferences.edit()
+                        editor.putBoolean("user", false)
+                        editor.commit()
+                    }
                 }
             })
     }

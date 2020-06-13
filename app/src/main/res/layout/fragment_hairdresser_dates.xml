@@ -11,41 +11,48 @@
         android:id="@+id/textViewHairdresserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_blank_fragment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="9dp"
         android:textColor="@color/colorPrimary"
-        android:textStyle="bold"/>
-
-    <ImageView
-        android:id="@+id/imageViewBanner"
-        android:layout_width="wrap_content"
-        android:layout_height="100dp"
-        android:cropToPadding="false"
-        android:scaleType="matrix"
-        android:src="@drawable/banner"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/mapDates"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHairdresserName" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <fragment
         android:id="@+id/mapDates"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="413dp"
         android:layout_height="200dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewBanner" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <CalendarView
         android:id="@+id/calendarViewDates"
         android:layout_width="0dp"
         android:layout_height="300dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/bg_calen"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:visibility="visible"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mapDates" />
+
+
+    <Button
+        android:id="@+id/buttonChangeSchedule"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/change_schedule"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarViewDates" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -18,8 +18,6 @@ import com.example.easyhaircut.classes.User
 import com.example.easyhaircut.fragments.HomeFragment
 import com.example.easyhaircut.fragments.MapFragment
 import com.example.easyhaircut.fragments.ProfileFragment
-import com.example.easyhaircut.fragments.SettingsFragment
-import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -113,9 +111,6 @@ class InicialActivity : AppCompatActivity() {
             R.id.nav_profile -> {
                 selectedFragment=ProfileFragment()
             }
-            R.id.nav_settings-> {
-                selectedFragment=SettingsFragment()
-            }
         }
         val transaction=manager.beginTransaction()
         transaction.replace(R.id.FragmentContainer, selectedFragment)
@@ -134,26 +129,6 @@ class InicialActivity : AppCompatActivity() {
         editor.commit()
     }
 
-    /**
-     * Load user from database
-     */
-    private fun loadUser():Boolean {
-        var success=false
-        userRef.get()
-            .addOnSuccessListener(OnSuccessListener<DocumentSnapshot> { documentSnapshot ->
-                if (documentSnapshot.exists()) {
-                    actualUser= documentSnapshot.toObject<User>(User::class.java)!!
-                    success=true
-                } else {
-                    //Toast.makeText(this, "Document does not exist", Toast.LENGTH_SHORT).show()
-                    success=false
-                }
-            })
-            .addOnFailureListener(OnFailureListener { e ->
-                Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
 
-            })
-        return success
-    }
 
 }

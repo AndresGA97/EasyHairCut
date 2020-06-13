@@ -2,8 +2,10 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintRegister"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_list"
     tools:context=".RegisterActivity">
     <!--Activity Title-->
     <TextView
@@ -175,8 +177,8 @@
         android:id="@+id/switchUserTypeRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/user"
         android:onClick="onClickTypeUser"
+        android:text="@string/user"
         app:layout_constraintBottom_toBottomOf="@+id/textViewUserTypeRegister"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

@@ -1,15 +1,15 @@
 package com.example.easyhaircut
 
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
+import android.graphics.drawable.AnimationDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.easyhaircut.classes.Dates
 import com.example.easyhaircut.classes.User
 import com.example.easyhaircut.exception.MissingDataException
@@ -21,9 +21,7 @@ import com.google.android.gms.common.SignInButton
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
-import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
@@ -42,6 +40,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        //animation Background gradient
+        val constraintLayout: ConstraintLayout = findViewById(R.id.constraintMain)
+        val animationDrawable: AnimationDrawable = constraintLayout.background as AnimationDrawable
+        animationDrawable.setEnterFadeDuration(2000)
+        animationDrawable.setExitFadeDuration(4000)
+        animationDrawable.start()
+
         signInButton=findViewById(R.id.buttonGoogleSignIn)//Google sign in button
         auth= FirebaseAuth.getInstance()//Initialize Firebase Auth
         db= FirebaseFirestore.getInstance()
@@ -173,11 +178,6 @@ class MainActivity : AppCompatActivity() {
         userRef.set(user)
             .addOnSuccessListener { documentReference ->  }
             .addOnFailureListener { }
-
-        var preferences: SharedPreferences =getSharedPreferences("userType", Context.MODE_PRIVATE)
-        var editor: SharedPreferences.Editor=preferences.edit()
-        editor.putBoolean("user", true)
-        editor.commit()
 
         //Changing actualActivity
         var intent: Intent = Intent(this,InicialActivity::class.java)
