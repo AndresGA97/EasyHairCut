@@ -27,5 +27,13 @@
             android:layout_weight="1"
             android:text="@string/name"
             android:textColor="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/buttonDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/custom_button"
+            android:text="@string/delete" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -42,4 +42,8 @@
     <string name="change_schedule">Cambiar Horario</string>
     <string name="accept">Aceptar</string>
     <string name="change_saved">Cambios guardados</string>
+    <string name="near_date">Fecha cercana</string>
+    <string name="next_date">Proxima fecha</string>
+    <string name="delete">Eliminar</string>
+    <string name="delete_last_dates">No se pueden borrar fechas pasadas</string>
 </resources>

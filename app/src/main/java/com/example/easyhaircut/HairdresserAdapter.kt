@@ -9,16 +9,14 @@ import androidx.recyclerview.widget.RecyclerView
 
 class HairdresserAdapter(exampleList: ArrayList<HairdresserItem>, onHairdresserListener: OnHairdresserListener) :
     RecyclerView.Adapter<HairdresserAdapter.HairdresserViewHolder>() {
-    private val hairdresserList: ArrayList<HairdresserItem>
-    private var onHairdresserListener:OnHairdresserListener
+    private val hairdresserList: ArrayList<HairdresserItem> = exampleList
+    private var onHairdresserListener:OnHairdresserListener = onHairdresserListener
 
     class HairdresserViewHolder(itemView: View, onHairdresserListener: OnHairdresserListener) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
-        var mTextView1: TextView
-        var onHairdresserListener:OnHairdresserListener
+        var mTextView1: TextView = itemView.findViewById(R.id.hairdresserName)
+        var onHairdresserListener:OnHairdresserListener = onHairdresserListener
 
         init {
-            mTextView1 = itemView.findViewById(R.id.hairdresserName)
-            this.onHairdresserListener=onHairdresserListener
             itemView.setOnClickListener(this)
         }
 
@@ -42,10 +40,6 @@ class HairdresserAdapter(exampleList: ArrayList<HairdresserItem>, onHairdresserL
         return hairdresserList.size
     }
 
-    init {
-        hairdresserList = exampleList
-        this.onHairdresserListener=onHairdresserListener
-    }
     interface OnHairdresserListener{
         fun hairdresserClick(position: Int)
     }

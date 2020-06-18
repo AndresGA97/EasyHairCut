@@ -108,6 +108,7 @@
         android:layout_marginTop="20dp"
         android:layout_weight="1"
         android:text="@string/accept"
+        android:background="@drawable/custom_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/horizontal" />

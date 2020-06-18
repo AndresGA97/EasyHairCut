@@ -8,16 +8,18 @@
     android:background="@drawable/gradient_list"
     tools:context=".RegisterActivity">
     <!--Activity Title-->
-    <TextView
-        android:id="@+id/textViewTitleRegister"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="@string/app_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
     <!--TextView User name-->
+    <ImageView
+        android:id="@+id/imageViewTitle"
+        android:layout_width="406dp"
+        android:layout_height="90dp"
+        android:layout_marginBottom="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextNameRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/easyhaircut" />
+
     <TextView
         android:id="@+id/textViewNameRegister"
         android:layout_width="wrap_content"
@@ -158,6 +160,7 @@
         android:layout_marginTop="40dp"
         android:onClick="toInicialFromRegister"
         android:text="@string/Sing_Up"
+        android:background="@drawable/custom_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"

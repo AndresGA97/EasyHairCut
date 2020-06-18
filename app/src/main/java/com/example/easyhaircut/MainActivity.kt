@@ -25,6 +25,8 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.messaging.FirebaseMessagingService
 
 
 class MainActivity : AppCompatActivity() {
@@ -202,4 +204,5 @@ class MainActivity : AppCompatActivity() {
 
             }
     }
+
 }

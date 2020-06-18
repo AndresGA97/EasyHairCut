@@ -40,5 +40,9 @@
     <string name="change_schedule">Change Schedule</string>
     <string name="accept">Accept</string>
     <string name="change_saved" >Change Saved</string>
+    <string name="near_date">Near Date</string>
+    <string name="next_date">Next date</string>
+    <string name="delete">Delete</string>
+    <string name="delete_last_dates">Cant delete past dates</string>
 
 </resources>
